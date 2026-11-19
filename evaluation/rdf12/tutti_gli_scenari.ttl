@@ -1,0 +1,253 @@
+VERSION "1.2"
+@prefix : <https://example.org/lexint/maranza/> .
+@prefix lexint: <https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix lemonEty: <http://lari-datasets.ilc.cnr.it/lemonEty#> .
+@prefix frac: <http://www.w3.org/ns/lemon/frac#> .
+@prefix hico: <http://purl.org/emmedi/hico/> .
+@prefix crminf: <http://www.cidoc-crm.org/extensions/crminf/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+
+# LexInt: dataset RDF 1.2 aggregato. Caricare questo file O i cinque moduli, non entrambi.
+
+# === 00_contesto_e_fonti.ttl ===
+
+# Entita' di supporto. Le ipotesi lessicali non sono qui asserite.
+:maranza a ontolex:Word ; ontolex:canonicalForm :formMaranza ;
+    frac:attestation :attCorvetto2009 .
+:formMaranza a ontolex:Form ; ontolex:writtenRep "maranza"@it .
+:analista a prov:Agent ; rdfs:label "Analista del caso di studio (ruolo dimostrativo)"@it .
+:redazioneTreccani a prov:Agent ; rdfs:label "Redazione Treccani (attribuzione pubblicamente documentata)"@it .
+:datasetVersionX a prov:Entity ; dcterms:description "Versione simulata usata nello scenario 5.3"@it .
+:versioneCorvettoDemo a prov:Entity ; dcterms:description "Versione dimostrativa dello scenario 5.2"@it .
+:fonteBanfi1992 a prov:Entity ; dcterms:bibliographicCitation "Banfi, Emanuele (1992). Conoscenza e uso di lessico giovanile a Milano e a Trento."@it .
+:fonteBisceglia2023 a prov:Entity ; dcterms:bibliographicCitation "Bisceglia, Michele (2023). Filologia maranza. Rolling Stone Italia."@it .
+:fonteDiValvasone2023 a prov:Entity, crm:E73_Information_Object ;
+    dcterms:title "Maranza, un vecchio giovanilismo"@it ;
+    dcterms:creator "Luisa di Valvasone" ;
+    dcterms:issued "2023"^^xsd:gYear ;
+    dcterms:identifier <https://doi.org/10.35948/2532-9006/2023.29085> ;
+    dcterms:bibliographicCitation "di Valvasone, Luisa. 2023. Maranza, un vecchio giovanilismo. Italiano Digitale 26 (3): 155-161."@it ;
+    cito:cites :fonteCorvetto2009 ;
+    dcterms:description "Fonte SECONDARIA effettivamente consultata per individuare l'occorrenza del 2009 e la sua provenienza."@it .
+:fonteCorvetto2009 a prov:Entity, crm:E73_Information_Object, dcmitype:Text ;
+    dcterms:title "Razzisti al Corvetto. «Reclutavano su Facebook»"@it ;
+    dcterms:creator "Andrea Galli" ;
+    dcterms:issued "2009-04-19"^^xsd:date ;
+    dcterms:bibliographicCitation "Galli, Andrea. 2009. Razzisti al Corvetto. «Reclutavano su Facebook». Corriere della Sera, Cronaca di Milano, 19 aprile 2009, p. 3."@it ;
+    dcterms:description "Fonte PRIMARIA attribuita alla testimonianza del Corvetto; dati bibliografici e contenuto ricavati indirettamente da di Valvasone (2023); non si dichiara una verifica diretta dell'articolo."@it .
+:attCorvetto2009 a frac:Attestation, prov:Entity ;
+    frac:observedIn :fonteCorvetto2009 ;
+    prov:wasDerivedFrom :fonteDiValvasone2023 ;
+    dcterms:description "Registrazione indiretta dell'attestazione del 2009. Nessun frac:quotedText: l'articolo originale non e' stato consultato integralmente."@it .
+:fonteCronaca2026 a prov:Entity ; dcterms:description "Cronache dell'ottobre 2026 (D'Amato; Mastromarino e Donati)"@it .
+:fonteTreccaniSet2025 a dcmitype:Text, crm:E73_Information_Object, prov:Entity ;
+    dcterms:issued "2025-09-05"^^xsd:date ; dcterms:identifier <https://www.treccani.it/magazine/lingua_italiana/domande_e_risposte/lessico/lessico_1246.html> .
+:fonteTreccaniOtt2025 a dcmitype:Text, crm:E73_Information_Object, prov:Entity ;
+    dcterms:issued "2025-10-06"^^xsd:date ; dcterms:identifier <https://www.treccani.it/magazine/lingua_italiana/domande_e_risposte/lessico/lessico_1265.html> .
+
+# === 01_etimologie_concorrenti.ttl ===
+
+# Scenario 5.1. Sette proposizioni NON ASSERITE per ciascuna etimologia.
+:claimEtyDialetto a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Ipotesi di origine dialettale (non dimostrata)."@it ;
+    prov:wasGeneratedBy :attoEtyDialetto .
+:claimEtyMarantz a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Ipotesi di derivazione dal marchio Marantz (non esclusiva)."@it ;
+    prov:wasGeneratedBy :attoEtyMarantz .
+:attoEtyDialetto a hico:InterpretationAct, prov:Activity ;
+    prov:used :fonteBanfi1992, :fonteDiValvasone2023 ; prov:wasAssociatedWith :analista .
+:attoEtyMarantz a hico:InterpretationAct, prov:Activity ;
+    prov:used :fonteBisceglia2023 ; prov:wasAssociatedWith :analista .
+:credenzaDialetto a crminf:I2_Belief ; crminf:J4_that :claimEtyDialetto ; crminf:J5_holds_to_be :possible .
+:credenzaMarantz a crminf:I2_Belief ; crminf:J4_that :claimEtyMarantz ; crminf:J5_holds_to_be :possible .
+:possible a crminf:I6_Belief_Value ; rdfs:label "possible"@en .
+:etimoDialetto rdfs:label "Melanzana / ipotesi dialettale"@it .
+:etimoMarantz rdfs:label "Marantz (marchio audio)"@it .
+
+# Ogni lexint:TargetAssertion denota ESATTAMENTE una tripla candidata.
+:targetEtyDialetto1 a lexint:TargetAssertion ; rdf:reifies <<( :maranza lemonEty:etymology :etyDialetto )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto1 .
+:targetEtyDialetto2 a lexint:TargetAssertion ; rdf:reifies <<( :etyDialetto lemonEty:hasEtyLink :linkDialetto )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto2 .
+:targetEtyDialetto3 a lexint:TargetAssertion ; rdf:reifies <<( :linkDialetto lemonEty:etySource :etimoDialetto )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto3 .
+:targetEtyDialetto4 a lexint:TargetAssertion ; rdf:reifies <<( :linkDialetto lemonEty:etyTarget :maranza )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto4 .
+:targetEtyDialetto5 a lexint:TargetAssertion ; rdf:reifies <<( :etyDialetto rdf:type lemonEty:Etymology )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto5 .
+:targetEtyDialetto6 a lexint:TargetAssertion ; rdf:reifies <<( :linkDialetto rdf:type lemonEty:EtyLink )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto6 .
+:targetEtyDialetto7 a lexint:TargetAssertion ; rdf:reifies <<( :etimoDialetto rdf:type lemonEty:Etymon )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto7 .
+:targetEtyMarantz1 a lexint:TargetAssertion ; rdf:reifies <<( :maranza lemonEty:etymology :etyMarantz )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz1 .
+:targetEtyMarantz2 a lexint:TargetAssertion ; rdf:reifies <<( :etyMarantz lemonEty:hasEtyLink :linkMarantz )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz2 .
+:targetEtyMarantz3 a lexint:TargetAssertion ; rdf:reifies <<( :linkMarantz lemonEty:etySource :etimoMarantz )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz3 .
+:targetEtyMarantz4 a lexint:TargetAssertion ; rdf:reifies <<( :linkMarantz lemonEty:etyTarget :maranza )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz4 .
+:targetEtyMarantz5 a lexint:TargetAssertion ; rdf:reifies <<( :etyMarantz rdf:type lemonEty:Etymology )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz5 .
+:targetEtyMarantz6 a lexint:TargetAssertion ; rdf:reifies <<( :linkMarantz rdf:type lemonEty:EtyLink )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz6 .
+:targetEtyMarantz7 a lexint:TargetAssertion ; rdf:reifies <<( :etimoMarantz rdf:type lemonEty:Etymon )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz7 .
+
+# === 02_corvetto_2009.ttl ===
+
+# Scenario 5.2: Galli 2009 fonte originale; di Valvasone 2023 mediazione documentaria.
+# L'attestazione e' derivata da una citazione secondaria, NON da consultazione diretta.
+# J22 indica l'oggetto testuale della comprensione (fonte originale come citata);
+# prov:used registra i supporti realmente esaminati: mediazione e attestazione ricostruita.
+# La presente attivita' NON implica lettura diretta della fonte primaria.
+:letturaCorvetto a hico:InterpretationAct, crminf:I16_Meaning_Comprehension, prov:Activity ;
+    crminf:J22_interpreted_meaning_of :fonteCorvetto2009 ;
+    crminf:J23_interpreted_meaning_as :credenzaSignificato2009 ;
+    prov:used :attCorvetto2009, :fonteDiValvasone2023 ;
+    prov:wasAssociatedWith :analista .
+:claimLetturaCorvetto a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "La fonte giornalistica del 2009 associa il termine a persone descritte mediante categorie etnicizzate; cio' non dimostra un senso autonomo."@it ;
+    prov:wasGeneratedBy :letturaCorvetto .
+:categoriaEtnicizzata rdfs:label "Categorizzazione etnicizzata nel discorso giornalistico (ipotesi interpretativa)"@it .
+:credenzaSignificato2009 a crminf:I13_Intended_Meaning_Belief ;
+    crminf:J4_that :claimLetturaCorvetto ; crminf:J5_holds_to_be :possible .
+:inferenzaAutonomia a hico:InterpretationAct, crminf:I5_Inference_Making, prov:Activity ;
+    crminf:J1_used_as_premise :credenzaSignificato2009 ;
+    crminf:J2_concluded_that :credenzaSenso2009Autonomo ; prov:wasAssociatedWith :analista .
+:inferenzaContestuale a hico:InterpretationAct, crminf:I5_Inference_Making, prov:Activity ;
+    crminf:J1_used_as_premise :credenzaSignificato2009 ;
+    crminf:J2_concluded_that :credenzaSenso2009Contestuale ; prov:wasAssociatedWith :analista .
+:claimSense2009Autonomo a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Opzione interpretativa: riconoscere come accezione autonoma l'impiego del 2009, anziche' ricondurlo al senso piu' generale."@it ;
+    prov:wasGeneratedBy :inferenzaAutonomia .
+:claimSense2009Contestuale a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Opzione interpretativa: ricondurre l'impiego del 2009 a un senso generale contestualizzato, senza introdurre una nuova accezione."@it ;
+    prov:wasGeneratedBy :inferenzaContestuale .
+:credenzaSenso2009Autonomo a crminf:I2_Belief ; crminf:J4_that :claimSense2009Autonomo ; crminf:J5_holds_to_be :possible .
+:credenzaSenso2009Contestuale a crminf:I2_Belief ; crminf:J4_that :claimSense2009Contestuale ; crminf:J5_holds_to_be :possible .
+:decisioneSensoAutonomo a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimSense2009Autonomo ; lexint:decisionOutcome lexint:suspended ;
+    lexint:appliesToVersion :versioneCorvettoDemo ; prov:wasAssociatedWith :analista ;
+    dcterms:description "Decisione dimostrativa, non attribuita a un lessicografo storico."@it .
+:decisioneSensoContestuale a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimSense2009Contestuale ; lexint:decisionOutcome lexint:suspended ;
+    lexint:appliesToVersion :versioneCorvettoDemo ; prov:wasAssociatedWith :analista ;
+    dcterms:description "Decisione dimostrativa, non attribuita a un lessicografo storico."@it .
+
+# Ogni lexint:TargetAssertion denota ESATTAMENTE una tripla candidata.
+# La specificita' delle due opzioni e' descritta nelle rispettive claim e inferenze.
+# Per fedelta' alla Figura 3 (due target per opzione), non si introduce
+# qui una sesta proposizione candidata di collegamento attestazione-senso.
+:targetAttestazioneTema a lexint:TargetAssertion ; rdf:reifies <<( :attCorvetto2009 dcterms:subject :categoriaEtnicizzata )>> .
+:claimLetturaCorvetto lexint:targetAssertion :targetAttestazioneTema .
+:targetSense2009Type a lexint:TargetAssertion ; rdf:reifies <<( :senso2009Autonomo rdf:type ontolex:LexicalSense )>> .
+:claimSense2009Autonomo lexint:targetAssertion :targetSense2009Type .
+:targetSense2009Link a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :senso2009Autonomo )>> .
+:claimSense2009Autonomo lexint:targetAssertion :targetSense2009Link .
+:targetSenseGeneraleType a lexint:TargetAssertion ; rdf:reifies <<( :sensoGenerale rdf:type ontolex:LexicalSense )>> .
+:claimSense2009Contestuale lexint:targetAssertion :targetSenseGeneraleType .
+:targetSenseGeneraleLink a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :sensoGenerale )>> .
+:claimSense2009Contestuale lexint:targetAssertion :targetSenseGeneraleLink .
+
+# === 03_segmentazione_semantica.ttl ===
+
+# Scenario 5.3: tre strategie descrittive, tutte sospese nella stessa versione.
+# L'eventuale senso specifico di vandalismo non e' necessariamente incompatibile
+# con una segmentazione a uno o due sensi: il profilo non implica esclusivita'.
+:GiovaneOstentatoTrasgressivo rdfs:label "Giovane ostentato e trasgressivo"@it .
+:TamarroAnniOttanta rdfs:label "Tamarro degli anni Ottanta"@it .
+:GiovaneUrbanoContemporaneo rdfs:label "Giovane urbano contemporaneo"@it .
+:AutoreAttiVandalici rdfs:label "Autore di atti vandalici"@it .
+:claimSensoAutonomo a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Ipotesi di una sola accezione ampia riferita al giovane ostentato e trasgressivo."@it ;
+    prov:wasGeneratedBy :attoSegmentazioneUnica .
+:claim2Sensi a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Ipotesi di due accezioni, storica e contemporanea."@it ;
+    prov:wasGeneratedBy :attoSegmentazioneDueSensi .
+:claimSensoAttuale a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Ipotesi aggiuntiva di una nuova accezione riferita a chi compie atti vandalici; potenzialmente compatibile con altre segmentazioni."@it ;
+    prov:wasGeneratedBy :attoSensoVandalo .
+:attoSegmentazioneUnica a hico:InterpretationAct, prov:Activity ;
+    prov:used :fonteDiValvasone2023 ; prov:wasAssociatedWith :analista .
+:attoSegmentazioneDueSensi a hico:InterpretationAct, prov:Activity ;
+    prov:used :fonteDiValvasone2023 ; prov:wasAssociatedWith :analista .
+:attoSensoVandalo a hico:InterpretationAct, prov:Activity ;
+    prov:used :fonteCronaca2026 ; prov:wasAssociatedWith :analista .
+:decisioneSensoUnico a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimSensoAutonomo ; lexint:decisionOutcome lexint:suspended ;
+    lexint:appliesToVersion :datasetVersionX ; prov:wasAssociatedWith :analista ;
+    dcterms:description "Sospensione dimostrativa della proposta di segmentazione per la versione X, non attribuita a una redazione reale."@it .
+:decisioneDueSensi a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claim2Sensi ; lexint:decisionOutcome lexint:suspended ;
+    lexint:appliesToVersion :datasetVersionX ; prov:wasAssociatedWith :analista ;
+    dcterms:description "Sospensione dimostrativa dell'ipotesi a due sensi per la versione X, non attribuita a una redazione reale."@it .
+:decisioneSensoAttuale a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimSensoAttuale ; lexint:decisionOutcome lexint:suspended ;
+    lexint:appliesToVersion :datasetVersionX ; prov:wasAssociatedWith :analista ;
+    dcterms:description "Sospensione dimostrativa dell'ipotetica accezione vandalismo per la versione X, non attribuita a una redazione reale."@it .
+
+# Ogni lexint:TargetAssertion denota ESATTAMENTE una tripla candidata.
+:targetSensoOstentatoType a lexint:TargetAssertion ; rdf:reifies <<( :sensoOstentato rdf:type ontolex:LexicalSense )>> .
+:claimSensoAutonomo lexint:targetAssertion :targetSensoOstentatoType .
+:targetSensoOstentatoLink a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :sensoOstentato )>> .
+:claimSensoAutonomo lexint:targetAssertion :targetSensoOstentatoLink .
+:targetSensoOstentatoReference a lexint:TargetAssertion ; rdf:reifies <<( :sensoOstentato ontolex:reference :GiovaneOstentatoTrasgressivo )>> .
+:claimSensoAutonomo lexint:targetAssertion :targetSensoOstentatoReference .
+:targetSensoTamarroType a lexint:TargetAssertion ; rdf:reifies <<( :sensoTamarro rdf:type ontolex:LexicalSense )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoTamarroType .
+:targetSensoTamarroLink a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :sensoTamarro )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoTamarroLink .
+:targetSensoTamarroReference a lexint:TargetAssertion ; rdf:reifies <<( :sensoTamarro ontolex:reference :TamarroAnniOttanta )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoTamarroReference .
+:targetSensoContemporaneoType a lexint:TargetAssertion ; rdf:reifies <<( :sensoContemporaneo rdf:type ontolex:LexicalSense )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoContemporaneoType .
+:targetSensoContemporaneoLink a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :sensoContemporaneo )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoContemporaneoLink .
+:targetSensoContemporaneoReference a lexint:TargetAssertion ; rdf:reifies <<( :sensoContemporaneo ontolex:reference :GiovaneUrbanoContemporaneo )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoContemporaneoReference .
+:targetSensoVandaloType a lexint:TargetAssertion ; rdf:reifies <<( :sensoVandalo rdf:type ontolex:LexicalSense )>> .
+:claimSensoAttuale lexint:targetAssertion :targetSensoVandaloType .
+:targetSensoVandaloLink a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :sensoVandalo )>> .
+:claimSensoAttuale lexint:targetAssertion :targetSensoVandaloLink .
+:targetSensoVandaloReference a lexint:TargetAssertion ; rdf:reifies <<( :sensoVandalo ontolex:reference :AutoreAttiVandalici )>> .
+:claimSensoAttuale lexint:targetAssertion :targetSensoVandaloReference .
+
+# === 04_revisione_treccani.ttl ===
+
+# Scenario 5.4: decisioni attribuite a esiti PUBBLICAMENTE DOCUMENTATI,
+# non a deliberazioni interne alla redazione; si riusano i claim di 5.1.
+# :attoValutazioneTreccani e' una formalizzazione della posizione pubblicamente
+# documentata, non una dichiarazione dell'esistenza di un processo interno noto.
+:notaTreccaniPrima a prov:Entity ; dcterms:description "Versione precedente della nota etimologica"@it .
+:notaTreccani2025 a prov:Entity ; prov:wasRevisionOf :notaTreccaniPrima ;
+    dcterms:replaces :notaTreccaniPrima ;
+    dcterms:description "Nota etimologica aggiornata entro il 6 ottobre 2025"@it .
+:attoValutazioneTreccani a hico:InterpretationAct, crminf:I5_Inference_Making, prov:Activity, crm:E7_Activity ;
+    prov:used :fonteTreccaniSet2025, :fonteTreccaniOtt2025 ;
+    prov:wasAssociatedWith :redazioneTreccani ;
+    crm:P4_has_time-span :intervalloRevisione2025 ;
+    crminf:J2_concluded_that :credenzaTreccaniMarantz .
+:intervalloRevisione2025 a crm:E52_Time-Span ;
+    crm:P82b_end_of_the_end "2025-10-06T23:59:59"^^xsd:dateTime .
+:credenzaTreccaniMarantz a crminf:I2_Belief ;
+    crminf:J4_that :claimEtyMarantz ; crminf:J5_holds_to_be :highlyPlausible .
+:highlyPlausible a crminf:I6_Belief_Value ; rdfs:label "highly plausible"@en .
+:decisioneTreccaniMarantz a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimEtyMarantz ; lexint:decisionOutcome lexint:adopted ;
+    lexint:appliesToVersion :notaTreccani2025 ; prov:wasAssociatedWith :redazioneTreccani ;
+    dcterms:description "Inclusione editoriale dell'ipotesi Marantz; attribuzione ricostruita dalle risposte pubbliche Treccani."@it .
+:decisioneTreccaniDialetto a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimEtyDialetto ; lexint:decisionOutcome lexint:adopted ;
+    lexint:appliesToVersion :notaTreccani2025 ; prov:wasAssociatedWith :redazioneTreccani ;
+    dcterms:description "Mantenimento dell'alternativa dialettale; attribuzione ricostruita da documentazione pubblica."@it .
+
+# Ogni lexint:TargetAssertion denota ESATTAMENTE una tripla candidata.

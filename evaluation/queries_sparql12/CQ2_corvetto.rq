@@ -1,0 +1,32 @@
+VERSION "1.2"
+# SPARQL 1.2, triple terms non assertivi
+PREFIX : <https://example.org/lexint/maranza/>
+PREFIX lexint: <https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX lemonEty: <http://lari-datasets.ilc.cnr.it/lemonEty#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX frac: <http://www.w3.org/ns/lemon/frac#>
+PREFIX hico: <http://purl.org/emmedi/hico/>
+PREFIX crminf: <http://www.cidoc-crm.org/extensions/crminf/>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX cito: <http://purl.org/spar/cito/>
+
+# Quali ipotesi di senso derivano dal Corvetto 2009 e qual e' la catena documentaria?
+SELECT DISTINCT ?claim ?senso ?esito ?fontePrimaria ?fonteMediatrice
+WHERE {
+  :letturaCorvetto a crminf:I16_Meaning_Comprehension ;
+      crminf:J23_interpreted_meaning_as ?premessa .
+  ?inferenza a crminf:I5_Inference_Making ;
+      crminf:J1_used_as_premise ?premessa ;
+      crminf:J2_concluded_that ?credenza .
+  ?credenza crminf:J4_that ?claim .
+  ?claim lexint:targetAssertion ?target .
+  ?target rdf:reifies <<( :maranza ontolex:sense ?senso )>> .
+  ?decisione lexint:concernsClaim ?claim ; lexint:decisionOutcome ?esito .
+  :attCorvetto2009 frac:observedIn ?fontePrimaria ;
+      prov:wasDerivedFrom ?fonteMediatrice .
+  ?fonteMediatrice cito:cites ?fontePrimaria .
+}
+ORDER BY ?claim

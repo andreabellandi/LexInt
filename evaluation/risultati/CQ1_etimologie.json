@@ -1,0 +1,52 @@
+{
+  "results": {
+    "bindings": [
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimEtyDialetto"
+        },
+        "etimologia": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/etyDialetto"
+        },
+        "numeroProposizioni": {
+          "type": "literal",
+          "value": "7",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+        },
+        "fonti": {
+          "type": "literal",
+          "value": "https://example.org/lexint/maranza/fonteBanfi1992 | https://example.org/lexint/maranza/fonteDiValvasone2023"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimEtyMarantz"
+        },
+        "etimologia": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/etyMarantz"
+        },
+        "numeroProposizioni": {
+          "type": "literal",
+          "value": "7",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+        },
+        "fonti": {
+          "type": "literal",
+          "value": "https://example.org/lexint/maranza/fonteBisceglia2023"
+        }
+      }
+    ]
+  },
+  "head": {
+    "vars": [
+      "claim",
+      "etimologia",
+      "numeroProposizioni",
+      "fonti"
+    ]
+  }
+}

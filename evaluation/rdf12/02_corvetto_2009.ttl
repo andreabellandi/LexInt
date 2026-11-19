@@ -1,0 +1,70 @@
+VERSION "1.2"
+@prefix : <https://example.org/lexint/maranza/> .
+@prefix lexint: <https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix lemonEty: <http://lari-datasets.ilc.cnr.it/lemonEty#> .
+@prefix frac: <http://www.w3.org/ns/lemon/frac#> .
+@prefix hico: <http://purl.org/emmedi/hico/> .
+@prefix crminf: <http://www.cidoc-crm.org/extensions/crminf/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+
+# Scenario 5.2: Galli 2009 fonte originale; di Valvasone 2023 mediazione documentaria.
+# L'attestazione e' derivata da una citazione secondaria, NON da consultazione diretta.
+# J22 indica l'oggetto testuale della comprensione (fonte originale come citata);
+# prov:used registra i supporti realmente esaminati: mediazione e attestazione ricostruita.
+# La presente attivita' NON implica lettura diretta della fonte primaria.
+:letturaCorvetto a hico:InterpretationAct, crminf:I16_Meaning_Comprehension, prov:Activity ;
+    crminf:J22_interpreted_meaning_of :fonteCorvetto2009 ;
+    crminf:J23_interpreted_meaning_as :credenzaSignificato2009 ;
+    prov:used :attCorvetto2009, :fonteDiValvasone2023 ;
+    prov:wasAssociatedWith :analista .
+:claimLetturaCorvetto a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "La fonte giornalistica del 2009 associa il termine a persone descritte mediante categorie etnicizzate; cio' non dimostra un senso autonomo."@it ;
+    prov:wasGeneratedBy :letturaCorvetto .
+:categoriaEtnicizzata rdfs:label "Categorizzazione etnicizzata nel discorso giornalistico (ipotesi interpretativa)"@it .
+:credenzaSignificato2009 a crminf:I13_Intended_Meaning_Belief ;
+    crminf:J4_that :claimLetturaCorvetto ; crminf:J5_holds_to_be :possible .
+:inferenzaAutonomia a hico:InterpretationAct, crminf:I5_Inference_Making, prov:Activity ;
+    crminf:J1_used_as_premise :credenzaSignificato2009 ;
+    crminf:J2_concluded_that :credenzaSenso2009Autonomo ; prov:wasAssociatedWith :analista .
+:inferenzaContestuale a hico:InterpretationAct, crminf:I5_Inference_Making, prov:Activity ;
+    crminf:J1_used_as_premise :credenzaSignificato2009 ;
+    crminf:J2_concluded_that :credenzaSenso2009Contestuale ; prov:wasAssociatedWith :analista .
+:claimSense2009Autonomo a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Opzione interpretativa: riconoscere come accezione autonoma l'impiego del 2009, anziche' ricondurlo al senso piu' generale."@it ;
+    prov:wasGeneratedBy :inferenzaAutonomia .
+:claimSense2009Contestuale a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Opzione interpretativa: ricondurre l'impiego del 2009 a un senso generale contestualizzato, senza introdurre una nuova accezione."@it ;
+    prov:wasGeneratedBy :inferenzaContestuale .
+:credenzaSenso2009Autonomo a crminf:I2_Belief ; crminf:J4_that :claimSense2009Autonomo ; crminf:J5_holds_to_be :possible .
+:credenzaSenso2009Contestuale a crminf:I2_Belief ; crminf:J4_that :claimSense2009Contestuale ; crminf:J5_holds_to_be :possible .
+:decisioneSensoAutonomo a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimSense2009Autonomo ; lexint:decisionOutcome lexint:suspended ;
+    lexint:appliesToVersion :versioneCorvettoDemo ; prov:wasAssociatedWith :analista ;
+    dcterms:description "Decisione dimostrativa, non attribuita a un lessicografo storico."@it .
+:decisioneSensoContestuale a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimSense2009Contestuale ; lexint:decisionOutcome lexint:suspended ;
+    lexint:appliesToVersion :versioneCorvettoDemo ; prov:wasAssociatedWith :analista ;
+    dcterms:description "Decisione dimostrativa, non attribuita a un lessicografo storico."@it .
+
+# Ogni lexint:TargetAssertion denota ESATTAMENTE una tripla candidata.
+# La specificita' delle due opzioni e' descritta nelle rispettive claim e inferenze.
+# Per fedelta' alla Figura 3 (due target per opzione), non si introduce
+# qui una sesta proposizione candidata di collegamento attestazione-senso.
+:targetAttestazioneTema a lexint:TargetAssertion ; rdf:reifies <<( :attCorvetto2009 dcterms:subject :categoriaEtnicizzata )>> .
+:claimLetturaCorvetto lexint:targetAssertion :targetAttestazioneTema .
+:targetSense2009Type a lexint:TargetAssertion ; rdf:reifies <<( :senso2009Autonomo rdf:type ontolex:LexicalSense )>> .
+:claimSense2009Autonomo lexint:targetAssertion :targetSense2009Type .
+:targetSense2009Link a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :senso2009Autonomo )>> .
+:claimSense2009Autonomo lexint:targetAssertion :targetSense2009Link .
+:targetSenseGeneraleType a lexint:TargetAssertion ; rdf:reifies <<( :sensoGenerale rdf:type ontolex:LexicalSense )>> .
+:claimSense2009Contestuale lexint:targetAssertion :targetSenseGeneraleType .
+:targetSenseGeneraleLink a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :sensoGenerale )>> .
+:claimSense2009Contestuale lexint:targetAssertion :targetSenseGeneraleLink .

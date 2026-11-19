@@ -1,0 +1,59 @@
+{
+  "results": {
+    "bindings": [
+      {
+        "fontePrimaria": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/fonteCorvetto2009"
+        },
+        "fonteMediatrice": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/fonteDiValvasone2023"
+        },
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSense2009Autonomo"
+        },
+        "senso": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/senso2009Autonomo"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        }
+      },
+      {
+        "fontePrimaria": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/fonteCorvetto2009"
+        },
+        "fonteMediatrice": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/fonteDiValvasone2023"
+        },
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSense2009Contestuale"
+        },
+        "senso": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoGenerale"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        }
+      }
+    ]
+  },
+  "head": {
+    "vars": [
+      "claim",
+      "senso",
+      "esito",
+      "fontePrimaria",
+      "fonteMediatrice"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+VERSION "1.2"
+PREFIX : <https://example.org/lexint/maranza/>
+PREFIX lexint: <https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# Deve restituire false: verifica se almeno una proposizione candidata e' asserita.
+ASK WHERE {
+  ?target a lexint:TargetAssertion ;
+          rdf:reifies <<( ?s ?p ?o )>> .
+  ?s ?p ?o .
+}

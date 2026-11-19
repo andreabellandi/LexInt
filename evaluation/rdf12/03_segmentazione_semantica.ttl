@@ -1,0 +1,77 @@
+VERSION "1.2"
+@prefix : <https://example.org/lexint/maranza/> .
+@prefix lexint: <https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix lemonEty: <http://lari-datasets.ilc.cnr.it/lemonEty#> .
+@prefix frac: <http://www.w3.org/ns/lemon/frac#> .
+@prefix hico: <http://purl.org/emmedi/hico/> .
+@prefix crminf: <http://www.cidoc-crm.org/extensions/crminf/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+
+# Scenario 5.3: tre strategie descrittive, tutte sospese nella stessa versione.
+# L'eventuale senso specifico di vandalismo non e' necessariamente incompatibile
+# con una segmentazione a uno o due sensi: il profilo non implica esclusivita'.
+:GiovaneOstentatoTrasgressivo rdfs:label "Giovane ostentato e trasgressivo"@it .
+:TamarroAnniOttanta rdfs:label "Tamarro degli anni Ottanta"@it .
+:GiovaneUrbanoContemporaneo rdfs:label "Giovane urbano contemporaneo"@it .
+:AutoreAttiVandalici rdfs:label "Autore di atti vandalici"@it .
+:claimSensoAutonomo a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Ipotesi di una sola accezione ampia riferita al giovane ostentato e trasgressivo."@it ;
+    prov:wasGeneratedBy :attoSegmentazioneUnica .
+:claim2Sensi a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Ipotesi di due accezioni, storica e contemporanea."@it ;
+    prov:wasGeneratedBy :attoSegmentazioneDueSensi .
+:claimSensoAttuale a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Ipotesi aggiuntiva di una nuova accezione riferita a chi compie atti vandalici; potenzialmente compatibile con altre segmentazioni."@it ;
+    prov:wasGeneratedBy :attoSensoVandalo .
+:attoSegmentazioneUnica a hico:InterpretationAct, prov:Activity ;
+    prov:used :fonteDiValvasone2023 ; prov:wasAssociatedWith :analista .
+:attoSegmentazioneDueSensi a hico:InterpretationAct, prov:Activity ;
+    prov:used :fonteDiValvasone2023 ; prov:wasAssociatedWith :analista .
+:attoSensoVandalo a hico:InterpretationAct, prov:Activity ;
+    prov:used :fonteCronaca2026 ; prov:wasAssociatedWith :analista .
+:decisioneSensoUnico a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimSensoAutonomo ; lexint:decisionOutcome lexint:suspended ;
+    lexint:appliesToVersion :datasetVersionX ; prov:wasAssociatedWith :analista ;
+    dcterms:description "Sospensione dimostrativa della proposta di segmentazione per la versione X, non attribuita a una redazione reale."@it .
+:decisioneDueSensi a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claim2Sensi ; lexint:decisionOutcome lexint:suspended ;
+    lexint:appliesToVersion :datasetVersionX ; prov:wasAssociatedWith :analista ;
+    dcterms:description "Sospensione dimostrativa dell'ipotesi a due sensi per la versione X, non attribuita a una redazione reale."@it .
+:decisioneSensoAttuale a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimSensoAttuale ; lexint:decisionOutcome lexint:suspended ;
+    lexint:appliesToVersion :datasetVersionX ; prov:wasAssociatedWith :analista ;
+    dcterms:description "Sospensione dimostrativa dell'ipotetica accezione vandalismo per la versione X, non attribuita a una redazione reale."@it .
+
+# Ogni lexint:TargetAssertion denota ESATTAMENTE una tripla candidata.
+:targetSensoOstentatoType a lexint:TargetAssertion ; rdf:reifies <<( :sensoOstentato rdf:type ontolex:LexicalSense )>> .
+:claimSensoAutonomo lexint:targetAssertion :targetSensoOstentatoType .
+:targetSensoOstentatoLink a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :sensoOstentato )>> .
+:claimSensoAutonomo lexint:targetAssertion :targetSensoOstentatoLink .
+:targetSensoOstentatoReference a lexint:TargetAssertion ; rdf:reifies <<( :sensoOstentato ontolex:reference :GiovaneOstentatoTrasgressivo )>> .
+:claimSensoAutonomo lexint:targetAssertion :targetSensoOstentatoReference .
+:targetSensoTamarroType a lexint:TargetAssertion ; rdf:reifies <<( :sensoTamarro rdf:type ontolex:LexicalSense )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoTamarroType .
+:targetSensoTamarroLink a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :sensoTamarro )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoTamarroLink .
+:targetSensoTamarroReference a lexint:TargetAssertion ; rdf:reifies <<( :sensoTamarro ontolex:reference :TamarroAnniOttanta )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoTamarroReference .
+:targetSensoContemporaneoType a lexint:TargetAssertion ; rdf:reifies <<( :sensoContemporaneo rdf:type ontolex:LexicalSense )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoContemporaneoType .
+:targetSensoContemporaneoLink a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :sensoContemporaneo )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoContemporaneoLink .
+:targetSensoContemporaneoReference a lexint:TargetAssertion ; rdf:reifies <<( :sensoContemporaneo ontolex:reference :GiovaneUrbanoContemporaneo )>> .
+:claim2Sensi lexint:targetAssertion :targetSensoContemporaneoReference .
+:targetSensoVandaloType a lexint:TargetAssertion ; rdf:reifies <<( :sensoVandalo rdf:type ontolex:LexicalSense )>> .
+:claimSensoAttuale lexint:targetAssertion :targetSensoVandaloType .
+:targetSensoVandaloLink a lexint:TargetAssertion ; rdf:reifies <<( :maranza ontolex:sense :sensoVandalo )>> .
+:claimSensoAttuale lexint:targetAssertion :targetSensoVandaloLink .
+:targetSensoVandaloReference a lexint:TargetAssertion ; rdf:reifies <<( :sensoVandalo ontolex:reference :AutoreAttiVandalici )>> .
+:claimSensoAttuale lexint:targetAssertion :targetSensoVandaloReference .

@@ -1,0 +1,50 @@
+VERSION "1.2"
+@prefix : <https://example.org/lexint/maranza/> .
+@prefix lexint: <https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix lemonEty: <http://lari-datasets.ilc.cnr.it/lemonEty#> .
+@prefix frac: <http://www.w3.org/ns/lemon/frac#> .
+@prefix hico: <http://purl.org/emmedi/hico/> .
+@prefix crminf: <http://www.cidoc-crm.org/extensions/crminf/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+
+# Entita' di supporto. Le ipotesi lessicali non sono qui asserite.
+:maranza a ontolex:Word ; ontolex:canonicalForm :formMaranza ;
+    frac:attestation :attCorvetto2009 .
+:formMaranza a ontolex:Form ; ontolex:writtenRep "maranza"@it .
+:analista a prov:Agent ; rdfs:label "Analista del caso di studio (ruolo dimostrativo)"@it .
+:redazioneTreccani a prov:Agent ; rdfs:label "Redazione Treccani (attribuzione pubblicamente documentata)"@it .
+:datasetVersionX a prov:Entity ; dcterms:description "Versione simulata usata nello scenario 5.3"@it .
+:versioneCorvettoDemo a prov:Entity ; dcterms:description "Versione dimostrativa dello scenario 5.2"@it .
+:fonteBanfi1992 a prov:Entity ; dcterms:bibliographicCitation "Banfi, Emanuele (1992). Conoscenza e uso di lessico giovanile a Milano e a Trento."@it .
+:fonteBisceglia2023 a prov:Entity ; dcterms:bibliographicCitation "Bisceglia, Michele (2023). Filologia maranza. Rolling Stone Italia."@it .
+:fonteDiValvasone2023 a prov:Entity, crm:E73_Information_Object ;
+    dcterms:title "Maranza, un vecchio giovanilismo"@it ;
+    dcterms:creator "Luisa di Valvasone" ;
+    dcterms:issued "2023"^^xsd:gYear ;
+    dcterms:identifier <https://doi.org/10.35948/2532-9006/2023.29085> ;
+    dcterms:bibliographicCitation "di Valvasone, Luisa. 2023. Maranza, un vecchio giovanilismo. Italiano Digitale 26 (3): 155-161."@it ;
+    cito:cites :fonteCorvetto2009 ;
+    dcterms:description "Fonte SECONDARIA effettivamente consultata per individuare l'occorrenza del 2009 e la sua provenienza."@it .
+:fonteCorvetto2009 a prov:Entity, crm:E73_Information_Object, dcmitype:Text ;
+    dcterms:title "Razzisti al Corvetto. «Reclutavano su Facebook»"@it ;
+    dcterms:creator "Andrea Galli" ;
+    dcterms:issued "2009-04-19"^^xsd:date ;
+    dcterms:bibliographicCitation "Galli, Andrea. 2009. Razzisti al Corvetto. «Reclutavano su Facebook». Corriere della Sera, Cronaca di Milano, 19 aprile 2009, p. 3."@it ;
+    dcterms:description "Fonte PRIMARIA attribuita alla testimonianza del Corvetto; dati bibliografici e contenuto ricavati indirettamente da di Valvasone (2023); non si dichiara una verifica diretta dell'articolo."@it .
+:attCorvetto2009 a frac:Attestation, prov:Entity ;
+    frac:observedIn :fonteCorvetto2009 ;
+    prov:wasDerivedFrom :fonteDiValvasone2023 ;
+    dcterms:description "Registrazione indiretta dell'attestazione del 2009. Nessun frac:quotedText: l'articolo originale non e' stato consultato integralmente."@it .
+:fonteCronaca2026 a prov:Entity ; dcterms:description "Cronache dell'ottobre 2026 (D'Amato; Mastromarino e Donati)"@it .
+:fonteTreccaniSet2025 a dcmitype:Text, crm:E73_Information_Object, prov:Entity ;
+    dcterms:issued "2025-09-05"^^xsd:date ; dcterms:identifier <https://www.treccani.it/magazine/lingua_italiana/domande_e_risposte/lessico/lessico_1246.html> .
+:fonteTreccaniOtt2025 a dcmitype:Text, crm:E73_Information_Object, prov:Entity ;
+    dcterms:issued "2025-10-06"^^xsd:date ; dcterms:identifier <https://www.treccani.it/magazine/lingua_italiana/domande_e_risposte/lessico/lessico_1265.html> .

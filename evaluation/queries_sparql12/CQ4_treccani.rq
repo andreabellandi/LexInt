@@ -1,0 +1,31 @@
+VERSION "1.2"
+# SPARQL 1.2, triple terms non assertivi
+PREFIX : <https://example.org/lexint/maranza/>
+PREFIX lexint: <https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX lemonEty: <http://lari-datasets.ilc.cnr.it/lemonEty#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX frac: <http://www.w3.org/ns/lemon/frac#>
+PREFIX hico: <http://purl.org/emmedi/hico/>
+PREFIX crminf: <http://www.cidoc-crm.org/extensions/crminf/>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX cito: <http://purl.org/spar/cito/>
+
+# Quali etimologie figurano nella revisione Treccani 2025 e quali valori epistemici?
+SELECT DISTINCT ?claim ?etimologia ?esito ?valutazione ?precedente ?entro
+WHERE {
+  ?decisione a lexint:LexicographicDecision ;
+     lexint:appliesToVersion :notaTreccani2025 ;
+     lexint:concernsClaim ?claim ; lexint:decisionOutcome ?esito .
+  ?claim lexint:targetAssertion ?target .
+  ?target rdf:reifies <<( :maranza lemonEty:etymology ?etimologia )>> .
+  :notaTreccani2025 prov:wasRevisionOf ?precedente .
+  :attoValutazioneTreccani crm:P4_has_time-span/crm:P82b_end_of_the_end ?entro .
+  OPTIONAL {
+     :attoValutazioneTreccani crminf:J2_concluded_that ?credenza .
+     ?credenza crminf:J4_that ?claim ; crminf:J5_holds_to_be ?valutazione .
+  }
+}
+ORDER BY ?claim

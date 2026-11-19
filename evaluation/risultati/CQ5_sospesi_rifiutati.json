@@ -1,0 +1,432 @@
+{
+  "results": {
+    "bindings": [
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claim2Sensi"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#LexicalSense"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoTamarro"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claim2Sensi"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#LexicalSense"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoContemporaneo"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claim2Sensi"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/TamarroAnniOttanta"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#reference"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoTamarro"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claim2Sensi"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/GiovaneUrbanoContemporaneo"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#reference"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoContemporaneo"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claim2Sensi"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoTamarro"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#sense"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/maranza"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claim2Sensi"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoContemporaneo"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#sense"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/maranza"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSensoAttuale"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#LexicalSense"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoVandalo"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSensoAttuale"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/AutoreAttiVandalici"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#reference"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoVandalo"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSensoAttuale"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoVandalo"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#sense"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/maranza"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSensoAutonomo"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#LexicalSense"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoOstentato"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSensoAutonomo"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/GiovaneOstentatoTrasgressivo"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#reference"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoOstentato"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSensoAutonomo"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/datasetVersionX"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoOstentato"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#sense"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/maranza"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSense2009Autonomo"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/versioneCorvettoDemo"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#LexicalSense"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/senso2009Autonomo"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSense2009Autonomo"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/versioneCorvettoDemo"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/senso2009Autonomo"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#sense"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/maranza"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSense2009Contestuale"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/versioneCorvettoDemo"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#LexicalSense"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoGenerale"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSense2009Contestuale"
+        },
+        "versione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/versioneCorvettoDemo"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "o": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/sensoGenerale"
+        },
+        "p": {
+          "type": "uri",
+          "value": "http://www.w3.org/ns/lemon/ontolex#sense"
+        },
+        "s": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/maranza"
+        }
+      }
+    ]
+  },
+  "head": {
+    "vars": [
+      "versione",
+      "claim",
+      "esito",
+      "s",
+      "p",
+      "o"
+    ]
+  }
+}

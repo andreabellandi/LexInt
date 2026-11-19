@@ -1,0 +1,45 @@
+VERSION "1.2"
+@prefix : <https://example.org/lexint/maranza/> .
+@prefix lexint: <https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix lemonEty: <http://lari-datasets.ilc.cnr.it/lemonEty#> .
+@prefix frac: <http://www.w3.org/ns/lemon/frac#> .
+@prefix hico: <http://purl.org/emmedi/hico/> .
+@prefix crminf: <http://www.cidoc-crm.org/extensions/crminf/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+
+# Scenario 5.4: decisioni attribuite a esiti PUBBLICAMENTE DOCUMENTATI,
+# non a deliberazioni interne alla redazione; si riusano i claim di 5.1.
+# :attoValutazioneTreccani e' una formalizzazione della posizione pubblicamente
+# documentata, non una dichiarazione dell'esistenza di un processo interno noto.
+:notaTreccaniPrima a prov:Entity ; dcterms:description "Versione precedente della nota etimologica"@it .
+:notaTreccani2025 a prov:Entity ; prov:wasRevisionOf :notaTreccaniPrima ;
+    dcterms:replaces :notaTreccaniPrima ;
+    dcterms:description "Nota etimologica aggiornata entro il 6 ottobre 2025"@it .
+:attoValutazioneTreccani a hico:InterpretationAct, crminf:I5_Inference_Making, prov:Activity, crm:E7_Activity ;
+    prov:used :fonteTreccaniSet2025, :fonteTreccaniOtt2025 ;
+    prov:wasAssociatedWith :redazioneTreccani ;
+    crm:P4_has_time-span :intervalloRevisione2025 ;
+    crminf:J2_concluded_that :credenzaTreccaniMarantz .
+:intervalloRevisione2025 a crm:E52_Time-Span ;
+    crm:P82b_end_of_the_end "2025-10-06T23:59:59"^^xsd:dateTime .
+:credenzaTreccaniMarantz a crminf:I2_Belief ;
+    crminf:J4_that :claimEtyMarantz ; crminf:J5_holds_to_be :highlyPlausible .
+:highlyPlausible a crminf:I6_Belief_Value ; rdfs:label "highly plausible"@en .
+:decisioneTreccaniMarantz a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimEtyMarantz ; lexint:decisionOutcome lexint:adopted ;
+    lexint:appliesToVersion :notaTreccani2025 ; prov:wasAssociatedWith :redazioneTreccani ;
+    dcterms:description "Inclusione editoriale dell'ipotesi Marantz; attribuzione ricostruita dalle risposte pubbliche Treccani."@it .
+:decisioneTreccaniDialetto a lexint:LexicographicDecision, prov:Activity ;
+    lexint:concernsClaim :claimEtyDialetto ; lexint:decisionOutcome lexint:adopted ;
+    lexint:appliesToVersion :notaTreccani2025 ; prov:wasAssociatedWith :redazioneTreccani ;
+    dcterms:description "Mantenimento dell'alternativa dialettale; attribuzione ricostruita da documentazione pubblica."@it .
+
+# Ogni lexint:TargetAssertion denota ESATTAMENTE una tripla candidata.

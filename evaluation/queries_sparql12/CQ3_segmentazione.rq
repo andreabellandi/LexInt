@@ -1,0 +1,33 @@
+VERSION "1.2"
+# SPARQL 1.2, triple terms non assertivi
+PREFIX : <https://example.org/lexint/maranza/>
+PREFIX lexint: <https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX lemonEty: <http://lari-datasets.ilc.cnr.it/lemonEty#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX frac: <http://www.w3.org/ns/lemon/frac#>
+PREFIX hico: <http://purl.org/emmedi/hico/>
+PREFIX crminf: <http://www.cidoc-crm.org/extensions/crminf/>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX cito: <http://purl.org/spar/cito/>
+
+# Quali organizzazioni semantiche sono state considerate e quali esiti hanno?
+SELECT ?claim ?esito
+       (COUNT(DISTINCT ?senso) AS ?numeroSensi)
+       (COUNT(DISTINCT ?target) AS ?numeroProposizioni)
+WHERE {
+  ?decisione a lexint:LexicographicDecision ;
+    lexint:appliesToVersion :datasetVersionX ;
+    lexint:concernsClaim ?claim ;
+    lexint:decisionOutcome ?esito .
+  ?claim lexint:targetAssertion ?target .
+  ?target rdf:reifies <<( ?s ?p ?o )>> .
+  OPTIONAL {
+    ?claim lexint:targetAssertion ?targetSenso .
+    ?targetSenso rdf:reifies <<( :maranza ontolex:sense ?senso )>> .
+  }
+}
+GROUP BY ?claim ?esito
+ORDER BY ?claim

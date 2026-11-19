@@ -1,0 +1,74 @@
+{
+  "results": {
+    "bindings": [
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claim2Sensi"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "numeroSensi": {
+          "type": "literal",
+          "value": "2",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+        },
+        "numeroProposizioni": {
+          "type": "literal",
+          "value": "6",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSensoAttuale"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "numeroSensi": {
+          "type": "literal",
+          "value": "1",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+        },
+        "numeroProposizioni": {
+          "type": "literal",
+          "value": "3",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+        }
+      },
+      {
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimSensoAutonomo"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#suspended"
+        },
+        "numeroSensi": {
+          "type": "literal",
+          "value": "1",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+        },
+        "numeroProposizioni": {
+          "type": "literal",
+          "value": "3",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer"
+        }
+      }
+    ]
+  },
+  "head": {
+    "vars": [
+      "claim",
+      "esito",
+      "numeroSensi",
+      "numeroProposizioni"
+    ]
+  }
+}

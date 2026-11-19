@@ -1,0 +1,39 @@
+{
+  "results": {
+    "bindings": [
+      {
+        "attestazione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/attCorvetto2009"
+        },
+        "fontePrimaria": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/fonteCorvetto2009"
+        },
+        "fonteMediatrice": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/fonteDiValvasone2023"
+        },
+        "titoloMediatrice": {
+          "type": "literal",
+          "value": "Maranza, un vecchio giovanilismo",
+          "xml:lang": "it"
+        },
+        "titoloPrimaria": {
+          "type": "literal",
+          "value": "Razzisti al Corvetto. «Reclutavano su Facebook»",
+          "xml:lang": "it"
+        }
+      }
+    ]
+  },
+  "head": {
+    "vars": [
+      "attestazione",
+      "fontePrimaria",
+      "titoloPrimaria",
+      "fonteMediatrice",
+      "titoloMediatrice"
+    ]
+  }
+}

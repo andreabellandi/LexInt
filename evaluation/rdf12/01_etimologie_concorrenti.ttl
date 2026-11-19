@@ -1,0 +1,63 @@
+VERSION "1.2"
+@prefix : <https://example.org/lexint/maranza/> .
+@prefix lexint: <https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix lemonEty: <http://lari-datasets.ilc.cnr.it/lemonEty#> .
+@prefix frac: <http://www.w3.org/ns/lemon/frac#> .
+@prefix hico: <http://purl.org/emmedi/hico/> .
+@prefix crminf: <http://www.cidoc-crm.org/extensions/crminf/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+
+# Scenario 5.1. Sette proposizioni NON ASSERITE per ciascuna etimologia.
+:claimEtyDialetto a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Ipotesi di origine dialettale (non dimostrata)."@it ;
+    prov:wasGeneratedBy :attoEtyDialetto .
+:claimEtyMarantz a lexint:InterpretiveClaim, prov:Entity ;
+    dcterms:description "Ipotesi di derivazione dal marchio Marantz (non esclusiva)."@it ;
+    prov:wasGeneratedBy :attoEtyMarantz .
+:attoEtyDialetto a hico:InterpretationAct, prov:Activity ;
+    prov:used :fonteBanfi1992, :fonteDiValvasone2023 ; prov:wasAssociatedWith :analista .
+:attoEtyMarantz a hico:InterpretationAct, prov:Activity ;
+    prov:used :fonteBisceglia2023 ; prov:wasAssociatedWith :analista .
+:credenzaDialetto a crminf:I2_Belief ; crminf:J4_that :claimEtyDialetto ; crminf:J5_holds_to_be :possible .
+:credenzaMarantz a crminf:I2_Belief ; crminf:J4_that :claimEtyMarantz ; crminf:J5_holds_to_be :possible .
+:possible a crminf:I6_Belief_Value ; rdfs:label "possible"@en .
+:etimoDialetto rdfs:label "Melanzana / ipotesi dialettale"@it .
+:etimoMarantz rdfs:label "Marantz (marchio audio)"@it .
+
+# Ogni lexint:TargetAssertion denota ESATTAMENTE una tripla candidata.
+:targetEtyDialetto1 a lexint:TargetAssertion ; rdf:reifies <<( :maranza lemonEty:etymology :etyDialetto )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto1 .
+:targetEtyDialetto2 a lexint:TargetAssertion ; rdf:reifies <<( :etyDialetto lemonEty:hasEtyLink :linkDialetto )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto2 .
+:targetEtyDialetto3 a lexint:TargetAssertion ; rdf:reifies <<( :linkDialetto lemonEty:etySource :etimoDialetto )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto3 .
+:targetEtyDialetto4 a lexint:TargetAssertion ; rdf:reifies <<( :linkDialetto lemonEty:etyTarget :maranza )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto4 .
+:targetEtyDialetto5 a lexint:TargetAssertion ; rdf:reifies <<( :etyDialetto rdf:type lemonEty:Etymology )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto5 .
+:targetEtyDialetto6 a lexint:TargetAssertion ; rdf:reifies <<( :linkDialetto rdf:type lemonEty:EtyLink )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto6 .
+:targetEtyDialetto7 a lexint:TargetAssertion ; rdf:reifies <<( :etimoDialetto rdf:type lemonEty:Etymon )>> .
+:claimEtyDialetto lexint:targetAssertion :targetEtyDialetto7 .
+:targetEtyMarantz1 a lexint:TargetAssertion ; rdf:reifies <<( :maranza lemonEty:etymology :etyMarantz )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz1 .
+:targetEtyMarantz2 a lexint:TargetAssertion ; rdf:reifies <<( :etyMarantz lemonEty:hasEtyLink :linkMarantz )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz2 .
+:targetEtyMarantz3 a lexint:TargetAssertion ; rdf:reifies <<( :linkMarantz lemonEty:etySource :etimoMarantz )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz3 .
+:targetEtyMarantz4 a lexint:TargetAssertion ; rdf:reifies <<( :linkMarantz lemonEty:etyTarget :maranza )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz4 .
+:targetEtyMarantz5 a lexint:TargetAssertion ; rdf:reifies <<( :etyMarantz rdf:type lemonEty:Etymology )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz5 .
+:targetEtyMarantz6 a lexint:TargetAssertion ; rdf:reifies <<( :linkMarantz rdf:type lemonEty:EtyLink )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz6 .
+:targetEtyMarantz7 a lexint:TargetAssertion ; rdf:reifies <<( :etimoMarantz rdf:type lemonEty:Etymon )>> .
+:claimEtyMarantz lexint:targetAssertion :targetEtyMarantz7 .

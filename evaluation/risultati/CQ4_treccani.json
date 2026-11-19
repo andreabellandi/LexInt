@@ -1,0 +1,66 @@
+{
+  "results": {
+    "bindings": [
+      {
+        "entro": {
+          "type": "literal",
+          "value": "2025-10-06T23:59:59",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "precedente": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/notaTreccaniPrima"
+        },
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimEtyDialetto"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#adopted"
+        },
+        "etimologia": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/etyDialetto"
+        }
+      },
+      {
+        "entro": {
+          "type": "literal",
+          "value": "2025-10-06T23:59:59",
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "precedente": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/notaTreccaniPrima"
+        },
+        "claim": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/claimEtyMarantz"
+        },
+        "esito": {
+          "type": "uri",
+          "value": "https://lexo.ilc.cnr.it/vocabulary/lexical-interpretation#adopted"
+        },
+        "etimologia": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/etyMarantz"
+        },
+        "valutazione": {
+          "type": "uri",
+          "value": "https://example.org/lexint/maranza/highlyPlausible"
+        }
+      }
+    ]
+  },
+  "head": {
+    "vars": [
+      "claim",
+      "etimologia",
+      "esito",
+      "valutazione",
+      "precedente",
+      "entro"
+    ]
+  }
+}
